@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0A0E27">
+    <title>Surwipe - Tevel Career Survey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Desktop Block Screen -->
+        <div id="desktop-block" class="screen">
+            <div class="desktop-content">
+                <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <h1>Apri questo link da smartphone</h1>
+                <p>Questa esperienza è ottimizzata per swipe su mobile</p>
+            </div>
+        </div>
+
+        <!-- Main Mobile App Container -->
+        <div id="mobile-app" class="screen hidden">
+            <!-- Intro Screen -->
+            <div id="intro-screen" class="card-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="card swipeable" id="intro-card">
+                    <div class="card-content">
+                        <div class="question-number">Domanda 1</div>
+                        <h2 class="question-text">Sei interessato a lavorare in Tevel?</h2>
+                        <div class="swipe-tutorial">
+                            <div class="tutorial-item">
+                                <svg class="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                                <span>Scorri a destra per SI</span>
+                            </div>
+                            <div class="tutorial-item">
+                                <svg class="arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                </svg>
+                                <span>Scorri a sinistra per NO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swipe-overlay yes-overlay">
+                        <div class="overlay-text">SI</div>
+                    </div>
+                    <div class="swipe-overlay no-overlay">
+                        <div class="overlay-text">NO</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Screen -->
+            <div id="form-screen" class="card-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+                <div class="card swipeable" id="form-card">
+                    <div class="card-content">
+                        <h2 class="form-title">I tuoi dati</h2>
+                        <p class="form-subtitle">Compila per continuare</p>
+                        <form id="user-form" class="user-form">
+                            <div class="form-group">
+                                <label for="first-name">Nome</label>
+                                <input type="text" id="first-name" name="firstName" required minlength="2" autocomplete="given-name">
+                                <span class="error-message">Il nome deve contenere almeno 2 caratteri</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Cognome</label>
+                                <input type="text" id="last-name" name="lastName" required minlength="2" autocomplete="family-name">
+                                <span class="error-message">Il cognome deve contenere almeno 2 caratteri</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                                <span class="error-message">Inserisci un'email valida</span>
+                            </div>
+                        </form>
+                        <div class="form-instruction">
+                            <svg class="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            <span>Scorri a destra per continuare</span>
+                        </div>
+                    </div>
+                    <div class="swipe-overlay yes-overlay">
+                        <div class="overlay-text">AVANTI</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Screens -->
+            <div id="question-screen" class="card-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+                <div class="card swipeable" id="question-card">
+                    <div class="card-content">
+                        <div class="question-number">Domanda <span id="current-q-num">2</span></div>
+                        <h2 class="question-text" id="current-question">Question text here</h2>
+                    </div>
+                    <div class="swipe-overlay yes-overlay">
+                        <div class="overlay-text">SI</div>
+                    </div>
+                    <div class="swipe-overlay no-overlay">
+                        <div class="overlay-text">NO</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Captcha Screen -->
+            <div id="captcha-screen" class="card-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <div class="card" id="captcha-card">
+                    <div class="card-content">
+                        <h2 class="form-title">Verifica di sicurezza</h2>
+                        <p class="form-subtitle">Completa la verifica per inviare</p>
+                        <p id="captcha-status" class="form-subtitle">Verifica automatica in corso...</p>
+                        <button id="submit-btn" class="submit-button disabled" disabled>
+                            <span>Invia risposte</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submitting Screen -->
+            <div id="submitting-screen" class="card-container hidden">
+                <div class="card">
+                    <div class="card-content centered">
+                        <div class="spinner"></div>
+                        <h2 class="status-title">Invio in corso...</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Screen -->
+            <div id="success-screen" class="card-container hidden">
+                <div class="card">
+                    <div class="card-content centered">
+                        <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h2 class="status-title">Grazie!</h2>
+                        <p class="status-text">Risposte inviate correttamente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Screen -->
+            <div id="error-screen" class="card-container hidden">
+                <div class="card">
+                    <div class="card-content centered">
+                        <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <h2 class="status-title">Errore di invio</h2>
+                        <p class="status-text">Non è stato possibile inviare le tue risposte.</p>
+                        <button id="retry-btn" class="retry-button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                            <span>Riprova invio</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
