@@ -6,17 +6,3 @@ command = ""
 
 [build.upload]
 format = "service-worker"
-```
-
-But honestly, **just fix the build settings in the dashboard** - it's simpler.
-
-## After Fixing
-
-Your build log should show:
-```
-✓ Initializing build environment
-✓ Cloning git repository  
-✓ Installing tools and dependencies
-✓ Building application
-✓ Deploying to Cloudflare's global network
-✓ Success! Deployed to https://surswipe.pages.dev
