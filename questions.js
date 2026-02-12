@@ -5,23 +5,23 @@
 const QUESTIONS = [
     {
         id: "q1",
-        question: "Sei interessato in Tevel?"
+        question: "Are you interested in Tevel?"
     },
     {
         id: "q2",
-        question: "Sei interessato per un tirocinio formativo?"
+        question: "Are you interested in an internship?"
     },
     {
         id: "q3",
-        question: "Sei interessato pre lo sviluppo della tesi in azienda?"
+        question: "Are you interested in developing your thesis in company?"
     },
     {
         id: "q4",
-        question: "Sei interessato a lavorare in Tevel?"
+        question: "Are you interested in working at Tevel?"
     },
     {
         id: "q5",
-        question: "Ti farebbe piacere essere ricontattato?"
+        question: "Would you like to be contacted by us?"
     }
 ];
 

@@ -308,7 +308,7 @@ class SurwipeApp {
         this.disableSubmitButton();
         this.state.captchaToken = null;
         this.state.captchaTokenAt = null;
-        this.setCaptchaStatus('Verifica automatica in corso...');
+        this.setCaptchaStatus('Automatic verification in progress...');
 
         try {
             const token = await this.getRecaptchaToken('submit');
@@ -318,11 +318,11 @@ class SurwipeApp {
 
             this.state.captchaToken = token;
             this.state.captchaTokenAt = Date.now();
-            this.setCaptchaStatus('Verifica completata. Ora puoi inviare.');
+            this.setCaptchaStatus('Verification completed. You can now submit.');
             this.enableSubmitButton();
         } catch (e) {
             console.warn('reCAPTCHA v3 failed:', e);
-            this.setCaptchaStatus('Verifica non riuscita. Ricarica la pagina e riprova.');
+            this.setCaptchaStatus('Verification failed. Please reload the page and try again.');
             this.disableSubmitButton();
         }
     }
