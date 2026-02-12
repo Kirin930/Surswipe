@@ -2,7 +2,7 @@
 // SURWIPE - Cloudflare Worker
 // ========================================
 
-//import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
+
 
 // Rate limiting
 const rateLimitStore = new Map();
@@ -170,7 +170,7 @@ async function handleAPISubmit(request, env) {
 }
 
 export default {
-    async fetch(request, env, ctx) {
+    async fetch(request, env) {
         const url = new URL(request.url);
         
         // CORS preflight
@@ -190,22 +190,8 @@ export default {
         if (url.pathname === '/api/submit' && request.method === 'POST') {
             return handleAPISubmit(request, env);
         }
-        
-        // Serve static files
-        try {
-            return await getAssetFromKV(
-                {
-                    request,
-                    waitUntil: ctx.waitUntil.bind(ctx),
-                },
-                {
-                    ASSET_NAMESPACE: env.__STATIC_CONTENT,
-                    ASSET_MANIFEST: __STATIC_CONTENT_MANIFEST,
-                }
-            );
-        } catch (e) {
-            // 404 fallback
-            return new Response('Not found', { status: 404 });
-        }
+
+        // Serve static files via Workers Assets binding (Wrangler 3+)
+        return env.ASSETS.fetch(request);
     }
 };

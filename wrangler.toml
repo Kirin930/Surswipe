@@ -1,6 +1,8 @@
 name = "surswipe"
 main = "worker.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2026-02-12"
 
-[site]
-bucket = "./"
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
