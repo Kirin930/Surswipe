@@ -86,9 +86,11 @@
                                 <input type="email" id="email" name="email" required autocomplete="email">
                                 <span class="error-message">Please enter a valid email address</span>
                             </div>
-                            <div class="form-group">
-                                <checkbox id="consent" name="consent" required>
-                                    <span>I have read the <a href="/privacy/">Privacy Notice</a> and consent to the processing of my personal data for survey handling and requested follow-up contact.</span>
+                            <div class="privacy-consent">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">
+                                    I have read the <a href="/privacy/" target="_blank" rel="noopener">Privacy Notice</a> and consent to the processing of my personal data for survey handling and requested follow-up contact.
+                                </label>
                             </div>
                         </form>
                         <div class="form-instruction">
