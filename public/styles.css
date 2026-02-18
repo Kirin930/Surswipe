@@ -485,6 +485,81 @@ body {
 }
 
 /* ========================================
+   FORM SCREEN FIT TUNING
+   ======================================== */
+
+#form-screen {
+    padding-top: calc(env(safe-area-inset-top) + 0.75rem);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 0.75rem);
+}
+
+#form-card {
+    padding: 1.35rem 1.1rem;
+    touch-action: pan-y;
+}
+
+#form-card .card-content {
+    justify-content: flex-start;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0.2rem;
+}
+
+#form-card .logo-corner {
+    width: 56px;
+    top: 1rem;
+    right: 1rem;
+}
+
+#form-card .form-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.35rem;
+}
+
+#form-card .form-subtitle {
+    margin-bottom: 1.15rem;
+}
+
+#form-card .user-form {
+    gap: 0.95rem;
+}
+
+#form-card .form-group label {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+}
+
+#form-card .form-group input {
+    min-height: 46px;
+    padding: 0.8rem 1rem;
+}
+
+#form-card .form-group .error-message {
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+}
+
+#form-card .privacy-consent {
+    font-size: 0.72rem;
+    padding: 0.55rem 0.6rem;
+}
+
+#form-card .privacy-consent input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+#form-card .form-instruction {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+}
+
+#form-card .form-instruction span {
+    font-size: 0.85rem;
+}
+
+/* ========================================
    CAPTCHA & SUBMIT
    ======================================== */
 
